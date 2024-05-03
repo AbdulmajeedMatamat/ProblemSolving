@@ -1,6 +1,3 @@
-ProblemSolving 
-
-
 I Solved more than 90 problems and one small project which helped me to find out that I love programming and I want to make it my major in university to learn more about it .
 
 How to learn programming the right way? do not waste your time in the wrong place This is to summarize it:
