@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum oddOReven {odd = 1, even = 2};
+
+int readnumber()
+{
+	int number;
+	cout << "please enter number ?" << endl;
+	cin >> number;
+
+	return number;
+}
+
+oddOReven cheakoddoreven(int number)
+{
+	if (number % 2 == 0)
+	{
+		return oddOReven::even;
+	}
+	else
+	{
+		return oddOReven::odd;
+	}
+
+}
+
+void printtype(oddOReven numbertype)
+{
+	if (numbertype == oddOReven::even)
+	{
+		cout << "this number even. \n";
+	}
+	else
+	{
+		cout << "this number odd. \n";
+	}
+
+}
+
+int main()
+{
+
+	printtype(cheakoddoreven(readnumber()));
+
+	return 0;
+}
