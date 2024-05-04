@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void printname(string name)
+{
+
+	cout << "your name is " << name << endl;
+
+}
+int main()
+{
+
+	printname("Abdulmajeed");
+
+	return 0;
+}
