@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct stthreenumber
+{
+	int num1;
+	int num2;
+	int num3;
+};
+
+stthreenumber readnumber()
+{
+	stthreenumber threenumber;
+
+	cout << "please enter num 1 ?" << endl;
+	cin >> threenumber.num1;
+
+	cout << "please enter num 2 ?" << endl;
+	cin >> threenumber.num2;
+
+	cout << "please enter num 3 ?" << endl;
+	cin >> threenumber.num3;
+
+	return threenumber;
+}
+
+int sum3number(stthreenumber numbers)
+{
+	return numbers.num1 + numbers.num2 + numbers.num3;
+}
+
+void printresult(stthreenumber total)
+{
+
+	cout << "the total of three number is : " << sum3number(total) << endl;
+
+}
+
+int main()
+{
+
+	printresult(readnumber());
+
+	return 0;
+}
