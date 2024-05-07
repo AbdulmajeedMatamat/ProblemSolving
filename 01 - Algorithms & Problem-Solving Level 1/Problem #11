@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enpassorfail {pass = 1, fail = 2};
+
+struct stthreenumber
+{
+	float num1;
+	float num2;
+	float num3;
+};
+
+stthreenumber readnumber()
+{
+	stthreenumber threenumber;
+
+	cout << "please enter num 1 ?" << endl;
+	cin >> threenumber.num1;
+
+	cout << "please enter num 2 ?" << endl;
+	cin >> threenumber.num2;
+
+	cout << "please enter num 3 ?" << endl;
+	cin >> threenumber.num3;
+
+	return threenumber;
+}
+
+float sum3number(stthreenumber numbers)
+{
+	return numbers.num1 + numbers.num2 + numbers.num3;
+}
+
+float averageofnumbers(stthreenumber numbers)
+{
+
+	return sum3number(numbers) / 3;
+
+}
+
+enpassorfail cheakaverage(stthreenumber average)
+{
+	if (averageofnumbers(average) >= 50)
+		return enpassorfail::pass;
+	else
+		return enpassorfail::fail;
+}
+
+void printresult(stthreenumber numbers)
+{
+
+	cout << "the total of three number is : " << sum3number(numbers) << endl;
+	cout << "the average of three number is : " << averageofnumbers(numbers) << endl;
+	if (cheakaverage(numbers) == enpassorfail::pass)
+		cout << "the result : pass.";
+	else
+		cout << "the result : fail.";
+}
+
+int main()
+{
+
+	printresult(readnumber());
+
+	return 0;
+}
