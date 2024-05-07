@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void readnumber(int& number, int& number2)
+{
+	cout << "please enter number 1 ?" << endl;
+	cin >> number;
+
+	cout << "please enter number 2 ?" << endl;
+	cin >> number2;
+}
+
+int maxofnumber(int number1, int number2)
+{
+	if (number1 > number2)
+	{
+		return number1;
+	}
+	else
+	{
+		return number2;
+	}
+}
+
+void printresult(int max)
+{
+
+	cout << "the max number is " << max << endl;
+
+}
+
+int main()
+{
+	int num1, num2;
+	readnumber(num1, num2);
+	printresult(maxofnumber(num1, num2));
+
+	return 0;
+}
