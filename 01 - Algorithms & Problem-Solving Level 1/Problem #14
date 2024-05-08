@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void readnumbers(int& number1, int& number2)
+{
+	cout << "please enter number 1 ?" << endl;
+	cin >> number1;
+
+	cout << "please enter number 2 ?" << endl;
+	cin >> number2;
+}
+
+void swap(int& a, int& b)
+{
+	int swap;
+
+	swap = a;
+	a = b;
+	b = swap;
+}
+
+void printnumbers(int num1, int num2)
+{
+	cout << "A = " << num1 << endl;
+	cout << "B = " << num2 << endl;
+}
+
+int main()
+{
+	int num1, num2;
+	readnumbers(num1, num2);
+
+	printnumbers(num1, num2);
+	swap(num1, num2);
+	printnumbers(num1, num2);
+
+	return 0;
+}
