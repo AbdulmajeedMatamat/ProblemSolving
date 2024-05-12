@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readlong()
+{
+	float long0;
+	cout << "please enter the long value ?" << endl;
+	cin >> long0;
+
+	return long0;
+}
+
+float circlearea(float l)
+{
+	const float pi = 3.14159265359;
+	float Carea = (pow(l, 2)) / (4 * pi);
+	
+	return Carea;
+}
+
+void printresult(float area)
+{
+	cout << "the citcle area = " << area << "cm^2" << endl;
+}
+
+int main()
+{
+	
+	printresult(circlearea(readlong()));
+
+
+	return 0;
+}
