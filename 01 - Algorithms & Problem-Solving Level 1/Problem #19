@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readnumbers()
+{
+	float number1;
+	cout << "please enter number 1 ?" << endl;
+	cin >> number1;
+
+	return number1;
+}
+
+float area(float a)
+{
+	float area = (3.14 * pow(a, 2)) / 4;
+	
+	return area;
+}
+
+void printnumbers(float area)
+{
+	cout << "the area = " << area << " square centimeter." << endl;
+}
+
+int main()
+{
+	
+
+	printnumbers(area(readnumbers()));
+
+
+	return 0;
+}
