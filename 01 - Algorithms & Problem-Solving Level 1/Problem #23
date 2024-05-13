@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void readAandB(float& a, float& b, float& c)
+{
+	cout << "please enter A value ?" << endl;
+	cin >> a;
+
+	cout << "please enter B value ?" << endl;
+	cin >> b;
+
+	cout << "please enter C value ?" << endl;
+	cin >> c;
+}
+
+float cirlceArea(float a, float b, float c)
+{
+	const float bi = 3.14159265359;
+
+	float p = (a + b + c) / 2;
+	
+	float rule = (a * b * c) / (4 * sqrt(p * (p - a) * (p - b) * (p - c)));
+
+	float area = bi * (pow(rule, 2));
+
+	return area;
+}
+
+void printResult(float area)
+{
+	cout << "the circle area = " << area << endl;
+}
+
+int main()
+{
+	float a, b, c; 
+
+	readAandB(a, b, c);
+	printResult(cirlceArea(a, b, c));
+
+
+	return 0;
+}
