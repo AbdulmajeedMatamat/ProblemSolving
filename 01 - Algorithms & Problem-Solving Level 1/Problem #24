@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int readnumber()
+{
+	int age;
+	cout << "please enter your age ?" << endl;
+	cin >> age;
+
+	return age;
+}
+
+bool numberinrange(int number, int from, int to)
+{
+
+	return (number >= from && number <= to);
+
+}
+
+void printresult(int age)
+{
+	if (numberinrange(age, 18, 45))
+		cout << age << " is valid age." << endl;
+	else
+		cout << age << " is not valid age." << endl;
+}
+
+int main()
+{
+	
+	printresult(readnumber());
+
+	return 0;
+}
