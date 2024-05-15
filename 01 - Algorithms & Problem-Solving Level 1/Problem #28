@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enoddoreven {odd = 1, even = 2};
+
+int readnumber()
+{
+	int number;
+	cout << "please enter number ?" << endl;
+	cin >> number;
+
+	return number;
+}
+
+enoddoreven cheakoddoreven(int number)
+{
+	if (number % 2 == 0)
+	{
+		return enoddoreven::even;
+	}
+	else
+	{
+		return enoddoreven::odd;
+	}
+
+}
+
+int sumoddnumbers(int number)
+{
+	int sum = 0;
+
+	for (int i = 0; i <= number; i++)
+	{
+		if (cheakoddoreven(i) == enoddoreven::odd)
+		{
+			sum += i;
+		}
+	}
+
+	return sum;
+}
+
+/*void printresult(int sum)
+{
+
+	cout << "the sum odd number is = " << sum << endl;
+
+}*/
+
+int main()
+{
+	int number = readnumber();
+	
+	cout << sumoddnumbers(number) << endl;
+
+	return 0;
+}
