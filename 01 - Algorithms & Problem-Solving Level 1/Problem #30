@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int readpositivenumber(string massege)
+{
+	int number;
+	do
+	{
+		cout << massege << endl;
+		cin >> number;
+
+	} while (number <= 0);
+
+	return number;
+}
+
+int getfactorialNumber(int number)
+{
+	int f = 1;
+
+	for (int i = number; i >= 1; i--)
+	{
+		f = f * i;
+	}
+
+	return f;
+}
+
+int main()
+{
+
+	cout << getfactorialNumber(readpositivenumber("please enter positive number ?"));
+
+	return 0;
+}
