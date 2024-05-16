@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int readnumberinrange(int from, int to)
+{
+	int number;
+	do
+	{
+		cout << "please enter number betwen " << from << " and " << to << " ?" << endl;
+		cin >> number;
+
+	} while (number < from || number > to);
+
+	return number;
+}
+
+char getgrade(int grade)
+{
+	if (grade >= 90)
+		return 'A';
+	else if (grade >= 80)
+		return 'B';
+	else if (grade >= 70)
+		return 'C';
+	else if (grade >= 60)
+		return 'D';
+	else if (grade >= 50)
+		return 'E';
+	else 
+		return 'F';
+}
+
+int main()
+{
+	
+	cout << "the result is : " << getgrade(readnumberinrange(0, 100));
+
+	return 0;
+
+}
