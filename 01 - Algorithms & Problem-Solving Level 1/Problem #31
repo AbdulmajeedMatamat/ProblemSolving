@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int readnumber()
+{
+	int number;
+	cout << "please enter number ?" << endl;
+	cin >> number;
+
+	return number;
+}
+
+void powerof2_3_4(int n)
+{
+	int a, b, c;
+
+	a = n * n;
+	b = n * n * n;
+	c = n * n * n * n;
+
+	cout << a << " " << b << " " << c << endl;
+
+}
+
+int main()
+{
+
+	powerof2_3_4(readnumber());
+
+	return 0;
+}
