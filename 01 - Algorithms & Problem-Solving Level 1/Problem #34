@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+float readtotalsales()
+{
+	float toatalsales;
+	cout << "please enter your total sales ? " << endl;
+	cin >> toatalsales;
+
+	return toatalsales;
+}
+
+float getpercentage(float t)
+{
+	if (t >= 1000000)
+		return t * 0.01;
+	else if (t >= 500000)
+		return t * 0.02;
+	else if (t >= 100000)
+		return t * 0.03;
+	else if (t >= 50000)
+		return t * 0.05;
+	else
+		return t * 0;
+}
+
+void  printpercentage(float per)
+{
+
+	cout << "your percentage is : " << per << endl;
+
+}
+
+int main()
+{
+	
+	printpercentage(getpercentage(readtotalsales()));
+
+	return 0;
+
+}
