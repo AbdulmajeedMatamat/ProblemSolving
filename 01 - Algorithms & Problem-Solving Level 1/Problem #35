@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+struct stBankContenet
+{
+	int pennies, nickels, dimes, quarters, dollar;
+};
+
+stBankContenet readBankContenet()
+{
+	stBankContenet money;
+
+	cout << "please enter a total pennies ?" << endl;
+	cin >> money.pennies;
+	cout << "please enter a total nickels ?" << endl;
+	cin >> money.nickels;
+	cout << "please enter a total dimes ?" << endl;
+	cin >> money.dimes;
+	cout << "please enter a total quarters ?" << endl;
+	cin >> money.quarters;
+	cout << "please enter a total dollars ?" << endl;
+	cin >> money.dollar;
+
+	return money;
+}
+
+int calculatetotalpennies(stBankContenet money)
+{
+	int totalpennies = 0;
+
+	totalpennies = money.pennies * 1 + money.nickels * 5 + money.dimes * 10 + money.quarters * 25 + money.dollar * 100;
+
+	return totalpennies;
+}
+
+int main()
+{
+	int totalpennies = calculatetotalpennies(readBankContenet());
+	
+	cout << endl << "the total pennies is = " << totalpennies << endl;
+	cout << endl << "the total dollars is = " << (float)totalpennies / 100 << endl;
+
+
+	
+	return 0;
+
+}
