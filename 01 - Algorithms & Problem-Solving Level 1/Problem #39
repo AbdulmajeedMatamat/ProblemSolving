@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	do
+	{
+		cout << massege << endl;
+		cin >> number;
+
+	} while (number <= 0);
+
+	return number;
+}
+
+float calculateremainder(float totalbill, float totalcashpaid)
+{
+
+	return totalcashpaid - totalbill;
+
+}
+
+
+int main()
+{
+	float totalbill = readpositivenumber("please enter total bill ?");
+	float totalcashpaid = readpositivenumber("please enter total cash paid ?");
+
+	cout << endl;
+	cout << "total bill : " << totalbill << endl;
+	cout << "total cash paid : " << totalcashpaid << endl << endl;
+
+	cout << "remainder : " << calculateremainder(totalbill, totalcashpaid) << endl;
+
+	return 0;
+}
