@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enprimenotprime {prime = 1, notprime = 2};
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+	
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+enprimenotprime cheakprime(int number)
+{
+	int m = round(number / 2);
+
+	for (int i = 2; i <= m; i++)
+	{
+		if (number % i == 0)
+		{
+			return enprimenotprime::notprime;
+		}
+	}
+
+	return enprimenotprime::prime;
+}
+
+void printresult(int number)
+{
+	switch (cheakprime(number))
+	{
+	case enprimenotprime::prime:
+		cout << "this is prime number.\n";
+		break;
+	case enprimenotprime::notprime:
+		cout << "this is not prime number.\n";
+		break;
+	}
+
+
+}
+
+int main()
+{
+	
+	printresult(readpositivenumber("please enter positive number ?"));
+	
+	return 0;
+}
