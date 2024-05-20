@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	do
+	{
+		cout << massege << endl;
+		cin >> number;
+
+	} while (number <= 0);
+
+	return number;
+}
+
+float calculatetotal(float totalbill)
+{
+	float service = totalbill * 1.10;
+	
+	return service * 1.16;
+
+}
+
+
+int main()
+{
+	float totalbill = readpositivenumber("please enter total bill ?");
+	
+	cout << endl << "+ 10% service" << endl;
+	cout << "+ 16% tax " << endl;
+	cout << "****************" << endl;
+	cout << "total bill is = " << calculatetotal(totalbill) << endl;
+
+	return 0;
+}
