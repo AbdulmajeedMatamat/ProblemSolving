@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	int number;
+
+	do
+	{
+		cout << massege << endl;
+		cin >> number;
+
+	} while (number < 0);
+	
+	return number;
+}
+
+float hourtoday(float hour)
+{
+	return (float)hour / 24;
+
+}
+
+float daytoweek(float day)
+{
+	return (float)day / 7;
+
+}
+
+float hourtoweek(float hour)
+{
+	return hour / 24 / 7;
+}
+
+int main()
+{
+	float numberofhour = readpositivenumber("please enter positive number ?");
+	float numberofday = hourtoday(numberofhour);
+	float numberofweek = daytoweek(numberofday);
+
+	cout << endl;
+	cout << "total hours = " << numberofhour << endl;
+	cout << "total days = " << numberofday << endl;
+	cout << "total weeks = " << numberofweek << endl;
+
+	return 0;
+}
