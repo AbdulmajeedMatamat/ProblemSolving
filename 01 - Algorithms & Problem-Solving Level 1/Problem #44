@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum endayofweek { sat = 1, sun = 2, mon = 3, tue = 4, wed = 5, the = 6, fri = 7 };
+
+int readnumberinrange(string massege, int from, int to)
+{
+	int number = 0;
+	do
+	{
+		cout << massege << endl;
+		cin >> number;
+	} while (number < from || number > to);
+
+	return number;
+}
+
+endayofweek readdayofweek()
+{
+	return (endayofweek)readnumberinrange("please enter day number ?", 1, 7);
+}
+
+string getdayofweek(endayofweek day)
+{
+	switch (day)
+	{
+	case sat:
+		return "saturday";
+	case sun:
+		return "sunday";
+	case mon:
+		return "monday";
+	case tue:
+		return "tuesday";
+	case wed:
+		return "wednesday";
+	case the:
+		return "thursday";
+	case fri:
+		return "friday";
+	default:
+		return "wrong day";
+	}
+
+}
+
+int main()
+{
+	
+	cout << getdayofweek(readdayofweek()) << endl;
+
+	return 0;
+}
