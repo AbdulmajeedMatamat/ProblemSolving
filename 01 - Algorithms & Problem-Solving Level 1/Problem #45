@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enmonthofyear { jan = 1, feb = 2, mar = 3, apr = 4, may = 5, jun = 6, jul = 7, aug = 8, sep = 9, octo = 10, nov = 11, dece = 12 };
+
+int readnumberinrange(string massege, int from, int to)
+{
+	int number = 0;
+	do
+	{
+		cout << massege << endl;
+		cin >> number;
+	} while (number < from || number > to);
+
+	return number;
+}
+
+enmonthofyear readmonthofyear()
+{
+	return (enmonthofyear)readnumberinrange("please enter month number ?", 1, 12);
+}
+
+string getmonthofyear(enmonthofyear day)
+{
+	switch (day)
+	{
+	case jan:
+		return "january";
+	case feb:
+		return "february";
+	case mar:
+		return "march";
+	case apr:
+		return "april";
+	case may:
+		return "may";
+	case jun:
+		return "june";
+	case jul:
+		return "july";
+	case aug:
+		return "august";
+	case sep:
+		return "september";
+	case octo:
+		return "octobar";
+	case nov:
+		return "november";
+	case dece:
+		return "december";
+	default:
+		"wrong month !";
+	}
+
+
+}
+
+int main()
+{
+	
+	cout << getmonthofyear(readmonthofyear()) << endl;
+
+	return 0;
+}
