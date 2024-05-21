@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int readpositivenumber(string massege)
+{
+	int number;
+
+	do
+	{
+		cout << massege << endl;
+		cin >> number;
+
+	} while (number < 0);
+
+	return number;
+}
+
+struct sttaskduration
+{
+	int day, hour, minute, sec;
+};
+
+sttaskduration secoundtoduration(int totalsaec)
+{
+	sttaskduration taskduration;
+	int secoundperday = 24 * 60 * 60;
+	int secoundperhour = 60 * 60;
+	int secoundperminute = 60;
+
+	int reminder = 0;
+	taskduration.day = floor(totalsaec / secoundperday);
+	reminder = totalsaec % secoundperday;
+
+	taskduration.hour = floor(reminder / secoundperhour);
+	reminder = reminder % secoundperhour;
+
+	taskduration.minute = floor(reminder / secoundperminute);
+	reminder = reminder % secoundperminute;
+
+	taskduration.sec = reminder;
+
+	return taskduration;
+
+}
+
+void printtask(sttaskduration task)
+{
+	cout << endl;
+	cout << task.day << " : "
+		<< task.hour << " : "
+		<< task.minute << " : "
+		<< task.sec << endl;
+
+}
+
+int main()
+{
+	int totalsec = readpositivenumber("please enter total secound ?");
+	
+	printtask(secoundtoduration(totalsec));
+
+	return 0;
+}
