@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+int printresult(int digit, short number)
+{
+	int remainder = 0, counter = 0;
+
+	while (digit > 0)
+	{
+		remainder = digit % 10;
+		digit = digit / 10;
+		
+		if (remainder == number)
+		{
+			counter++;
+		}
+	}
+	
+	return counter;
+}
+
+int main()
+{
+	int digit = readpositivenumber("please enter digit (positive number) ?");
+	short number = readpositivenumber("please enter positive number ?");
+
+	cout << "digit " << number << " frequency is " << printresult(digit, number) << "time(s)";
+
+
+	return 0;
+}
