@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+int countdigit(int digit, short number)
+{
+	int remainder = 0, counter = 0;
+
+	while (digit > 0)
+	{
+		remainder = digit % 10;
+		digit = digit / 10;
+		
+		if (remainder == number)
+		{
+			counter++;
+		}
+	}
+	
+	return counter;
+}
+
+void printall(int number)
+{
+	for (int  i = 0; i < 10; i++)
+	{
+		short digitfrequency = 0;
+		digitfrequency = countdigit(number, i);
+
+		if (digitfrequency > 0)
+		{
+			cout << "digit " << i << " frequency is " << digitfrequency << " time(s)" << endl;
+		}
+
+	}
+}
+
+int main()
+{
+
+	int digit = readpositivenumber("please enter digit (positive number) ?");
+	
+
+	printall(digit);
+
+
+	return 0;
+}
