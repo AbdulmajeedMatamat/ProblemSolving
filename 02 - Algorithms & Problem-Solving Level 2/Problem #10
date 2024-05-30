@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+int reversnumber(int number)
+{
+	int remainder = 0, number2 = 0;
+
+	while (number > 0)
+	{
+		remainder = number % 10;
+		number = number / 10;
+		number2 = number2 * 10 + remainder;
+	}
+	return number2;
+}
+
+void printdigit(int number)
+{
+	int remainder = 0;
+
+	while (number > 0)
+	{
+		remainder = number % 10;
+		number = number / 10;
+		cout << remainder << endl;
+	}
+}
+
+int main()
+{
+	printdigit(reversnumber(readpositivenumber("please enter positive number ?")));
+
+
+	return 0;
+}
