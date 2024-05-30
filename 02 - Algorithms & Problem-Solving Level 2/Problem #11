@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enpalindorno { notpalind = 1, palind = 2};
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+int reversnumber(int number)
+{
+	int remainder = 0, number2 = 0;
+
+	while (number > 0)
+	{
+		remainder = number % 10;
+		number = number / 10;
+		number2 = number2 * 10 + remainder;
+	}
+	return number2;
+}
+
+enpalindorno cheakpalind(int number)
+{
+	if (number == reversnumber(number))
+		return enpalindorno::palind;
+	else
+		return enpalindorno::notpalind;
+}
+
+void printresult(int number)
+{
+	if (cheakpalind(number) == enpalindorno::palind)
+		cout << "yes , it is a palindrome number." << endl;
+	else
+		cout << "no , it is NOT a palindrome number." << endl;
+}
+
+int main()
+{
+	
+	printresult(readpositivenumber("please enter positive number"));
+
+	return 0;
+}
