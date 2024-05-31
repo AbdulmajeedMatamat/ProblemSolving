@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+void printnumberpattern(int number)
+{
+
+	for (int i = 1; i <= number; i++)
+	{
+		for (int j = 1; j <= i; j++)
+		{
+			cout << i;
+		}
+		cout << endl;
+	}
+}
+
+int main()
+{
+	
+	printnumberpattern(readpositivenumber("please enter positive number ?"));
+
+	return 0;
+}
