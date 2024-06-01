@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+string readpass(string massege)
+{
+	string pass;
+	cout << massege << endl;
+	cin >> pass;
+
+	return pass;
+}
+
+bool guesepassword(string password)
+{
+	int counter = 0;
+	string word = "";
+
+	for (int i = 65; i <= 90; i++)
+	{
+		for (int j = 65; j <= 90; j++)
+		{
+			for (int f = 65; f <= 90; f++)
+			{
+				counter++;
+
+				word += char(i);
+				word += char(j);
+				word += char(f);
+
+				
+				cout << "Trial [" << counter << "] : " << word << endl;
+
+				if (word == password)
+				{
+					cout << "\nPassword is " << word << "\n";
+					cout << "Found after ";
+					cout << counter << " Trial(s)\n";
+
+					return true;
+				}
+
+				word = "";
+			}
+		}
+	}
+	return false;
+}
+
+int main()
+{
+	
+	guesepassword(readpass("please enter password ?"));
+
+	return 0;
+}
