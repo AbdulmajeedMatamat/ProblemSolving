@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readpositivenumber(string massege)
+{
+	float number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+void printletter()
+{
+
+	for (int i = 65; i <= 70; i++)
+	{
+		for (int j = 65; j <= 70; j++)
+		{
+			for (int f = 65; f <= 70; f++)
+			{
+				cout << char(i);
+				cout << char(j);
+				cout << char(f);
+				cout << endl;
+			}
+		}
+	}
+}
+
+int main()
+{
+	
+	printletter();
+
+	return 0;
+}
