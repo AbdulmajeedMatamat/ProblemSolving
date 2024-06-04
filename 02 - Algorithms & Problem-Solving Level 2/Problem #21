@@ -1,0 +1,96 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+int randomnumber(int from, int to)
+{
+	int randnumber = rand() % (to - from + 1) + from;
+
+	return randnumber;
+
+}
+
+enum enAllchar { smallletter = 1, capital = 2, specialchar = 3, digit = 4 };
+
+int readpositivenumber(string massege)
+{
+	int number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+char getrandomchar(enAllchar typechar)
+{
+	switch (typechar)
+	{
+	case smallletter:
+	{
+		return char(randomnumber(97, 122));
+		break;
+	}
+	case capital:
+	{
+		return char(randomnumber(65, 90));
+		break;
+	}
+	case specialchar:
+	{
+		return char(randomnumber(33, 47));
+		break;
+	}
+	case digit:
+	{
+		return char(randomnumber(48, 57));
+		break;
+	}
+	}
+}
+
+string generateword(enAllchar chartype, short length)
+{
+	string word = "";
+
+	for (int i = 1; i <= length; i++)
+	{
+		word += getrandomchar(chartype);
+	}
+
+	return word;
+}
+
+string generatekey()
+{
+	string key = "";
+
+	key = generateword(enAllchar::capital, 4) + "-";
+	key += generateword(enAllchar::capital, 4) + "-";
+	key += generateword(enAllchar::capital, 4) + "-";
+	key += generateword(enAllchar::capital, 4);
+
+	return key;
+}
+
+void printgeneratekeys(int manytime)
+{
+	for (int i = 1; i <= manytime; i++)
+	{
+		cout << "key [" << i << "] : ";
+		cout << generatekey() << endl;
+	}
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	printgeneratekeys(readpositivenumber("please enter how many keys ?"));
+	
+	return 0;
+}
