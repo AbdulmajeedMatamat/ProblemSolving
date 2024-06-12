@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+int readpositivenumber(string massege)
+{
+	int number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+int randomnumber(int from, int to)
+{
+	int randnumber = rand() % (to - from + 1) + from;
+
+	return randnumber;
+
+}
+
+string generateword(short length)
+{
+	string word = "";
+
+	for (int i = 1; i <= length; i++)
+	{
+		word += char(randomnumber(65, 90));
+	}
+
+	return word;
+}
+
+string generatekey()
+{
+	string key = "";
+
+	key = generateword(4) + "-";
+	key += generateword(4) + "-";
+	key += generateword(4) + "-";
+	key += generateword(4);
+
+	return key;
+}
+
+void readarray(string arr[100], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		arr[i] = generatekey();
+	}
+}
+
+void printarray(string arr[100], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		cout << "array[" << i << "] : ";
+		cout << arr[i] << endl;
+	}
+	
+	cout << endl;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+
+	string arr[100];
+
+	int length = readpositivenumber("please enter number of elements ?");
+
+	readarray(arr, length);
+
+	printarray(arr, length);
+
+
+	return 0;
+}
