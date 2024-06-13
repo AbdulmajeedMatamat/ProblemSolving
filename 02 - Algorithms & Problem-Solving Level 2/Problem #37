@@ -1,1 +1,78 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
 
+int readnumber(string massege)
+{
+	int number = 0;
+	cout << massege << endl;
+	cin >> number;
+	
+	return number;
+}
+
+int randomnumber(int from, int to)
+{
+	int randnumber = rand() % (to - from + 1) + from;
+
+	return randnumber;
+
+}
+
+void addarrayelements(int number, int arr[100], int& length)
+{
+	length++;
+	arr[length - 1] = number;
+}
+
+void fillarray(int arr[100], int length)
+{
+	length = readnumber("please enter number of elementes ?");
+
+	for (int i = 0; i < length; i++)
+	{
+		arr[i] = randomnumber(1, 100);
+	}
+}
+
+void printarray(int arr[100], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	
+	cout << endl;
+}
+
+void copyarrayelements(int arrsource[100], int arrcopy[100], int length, int& lengthcopy)
+{
+	for (int i = 0; i < length; i++)
+	{
+		addarrayelements(arrsource[i], arrcopy, lengthcopy);
+	}
+
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+
+	int arr[100], arr2[100], arrlength = 0, arrlengthcopy = 0;
+
+	fillarray(arr, arrlength);
+
+	copyarrayelements(arr, arr2, arrlength, arrlengthcopy);
+
+
+	cout << "array 1 elementes : " << endl;
+	printarray(arr, arrlength);
+
+
+	cout << "array 2 elementes : " << endl;
+	printarray(arr2, arrlengthcopy);
+
+	return 0;
+}
