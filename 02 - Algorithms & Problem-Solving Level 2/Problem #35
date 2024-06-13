@@ -1,0 +1,88 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+int readpositivenumber(string massege)
+{
+	int number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+int randomnumber(int from, int to)
+{
+	int randnumber = rand() % (to - from + 1) + from;
+
+	return randnumber;
+
+}
+
+void readarray(int arr[100], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		arr[i] = randomnumber(1, 100);
+	}
+}
+
+void printarray(int arr[100], int length)
+{
+	cout << "array 1 elements : " << endl;
+	for (int i = 0; i < length; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	
+	cout << endl;
+}
+
+short findnumber(int arr[100], int length, int numbertosersh)
+{
+	for (int i = 0; i < length; i++)
+	{
+		if (numbertosersh == arr[i])
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool isnumberinarray(int arr[100], int length, int number)
+{
+	return findnumber(arr, length, number) != -1;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+
+	int arr[100];
+
+	int length = readpositivenumber("please enter number of elements ?");
+
+	readarray(arr, length);
+
+	printarray(arr, length);
+
+	int numbertoserch = readpositivenumber("please enter a number to serch for ?");
+	
+	cout << "\nnumber you are looking for is : " << numbertoserch << endl;
+	
+   
+	if (isnumberinarray(arr, length, numbertoserch))
+		cout << "Yes, the number is found :-)" << endl;
+	else
+		cout << "No, the number is not found :-( " << endl;
+
+
+	
+	return 0;
+}
