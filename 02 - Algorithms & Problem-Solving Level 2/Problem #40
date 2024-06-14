@@ -1,0 +1,88 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+void addarrayelements(int number, int arr[100], int& length)
+{
+	length++;
+	arr[length - 1] = number;
+}
+
+void fillarray(int arr[100], int& length)
+{
+	length = 10;
+	arr[0] = 10;
+	arr[1] = 10;
+	arr[2] = 10;
+	arr[3] = 50;
+	arr[4] = 50;
+	arr[5] = 70;
+	arr[6] = 70;
+	arr[7] = 70;
+	arr[8] = 70;
+	arr[9] = 90;
+}
+
+void printarray(int arr[100], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	
+	cout << endl;
+}
+
+short findnumber(int arr[100], int length, int numbertosersh)
+{
+	for (int i = 0; i < length; i++)
+	{
+		if (numbertosersh == arr[i])
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool isnumberinarray(int number, int arr[100], int length)
+{
+	return findnumber(arr, length, number) != -1;
+}
+
+void copydistinctarrayelements(int arrsource[100], int arrcopy[100], int length, int& lengthcopy)
+{
+
+	for (int i = 0; i < length; i++)
+	{
+		if (!isnumberinarray(arrsource[i], arrcopy, lengthcopy))
+		{
+			addarrayelements(arrsource[i], arrcopy, lengthcopy);
+		}
+	};
+
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+
+	int arr[100], arr2[100], arrlength = 0, arrlengthcopy = 0;
+
+	fillarray(arr, arrlength);
+
+
+	cout << "array 1 elementes : " << endl;
+	printarray(arr, arrlength);
+
+
+	copydistinctarrayelements(arr, arr2, arrlength, arrlengthcopy);
+
+
+	cout << "array 2 distinct elementes : " << endl;
+	printarray(arr2, arrlengthcopy);
+
+	return 0;
+}
