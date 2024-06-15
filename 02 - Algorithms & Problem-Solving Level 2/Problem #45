@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+
+int readpositivenumber(string massege)
+{
+	int number = 0;
+
+	while (number <= 0)
+	{
+		cout << massege << endl;
+		cin >> number;
+	}
+	return number;
+}
+
+int randomnumber(int from, int to)
+{
+	int randnumber = rand() % (to - from + 1) + from;
+
+	return randnumber;
+
+}
+
+void fillarray(int arr[100], int& length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		arr[i] = randomnumber(-100, 100);
+	}
+}
+
+void printarray(int arr[100], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		cout << arr[i] << " ";
+	}
+
+	cout << endl;
+}
+
+int countnegativenumber(int arr[100], int length)
+{
+	int counter = 0;
+
+	for (int i = 0; i < length; i++)
+	{
+		if (arr[i] < 0)
+		{
+			counter++;
+		}
+	}
+
+	return counter;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+
+	int arr[100], arrlength = readpositivenumber("please enter number of elementes");
+
+	fillarray(arr, arrlength);
+
+
+	cout << "array elementes : " << endl;
+	printarray(arr, arrlength);
+
+
+	cout << "\npositive number count is : " << countnegativenumber(arr, arrlength) << endl;
+
+	return 0;
+}
