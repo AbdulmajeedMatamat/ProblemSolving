@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+using namespace std;
+
+float readnumber(string massege)
+{
+	float number = 0;
+	cout << massege << endl;
+	cin >> number;
+
+	return number;
+}
+
+int mysqrt(float number)
+{
+	return pow(number, 0.5);
+}
+
+int main()
+{
+	float number = readnumber(" ");
+
+	cout << "my sqrt result : " << mysqrt(number) << endl;
+
+	cout << "C++ sqrt result : " << sqrt(number) << endl;
+
+	return 0;
+}
