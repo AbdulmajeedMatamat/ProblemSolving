@@ -1,0 +1,65 @@
+// Problem 7.
+
+#include <iostream>   
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;  
+
+void FillMatrixWithOrderedNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+ int Counter = 1;
+
+ for (int i = 0; i <= Rows - 1; i++)
+ {
+  for (int j = 0; j <= Columns - 1; j++)
+  {
+   Matrix[i][j] = Counter;
+
+   Counter++;
+  }
+ }
+}
+
+void TransposeMatrix(int arr[3][3], int arrTransosed[3][3], short Rows, short Columns)
+{
+ for (int i = 0; i < Rows; i++)
+ {
+  for (int j = 0; j < Columns; j++)
+  {
+   arrTransosed[i][j] = arr[j][i];
+  }
+ }
+}
+
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+ for (int i = 0; i <= Rows - 1; i++)
+ {
+  for (int j = 0; j <= Columns - 1; j++)
+  {
+   cout << setw(3) << Matrix[i][j] << " ";
+  }
+
+  cout << endl;
+ }
+}
+
+int main()
+{
+ srand((unsigned)time(NULL));
+
+ int arr[3][3];
+ int arrTransosed[3][3];
+
+ FillMatrixWithOrderedNumbers(arr, 3, 3);
+
+ cout << " The following is a 3x3 ordered matrix : \n";
+ PrintMatrix(arr, 3, 3); 
+
+ TransposeMatrix(arr, arrTransosed, 3, 3);
+
+ cout << "\n The following is the transposed matrix : \n";
+ PrintMatrix(arrTransosed,3,3);
+ return 0;
+}
