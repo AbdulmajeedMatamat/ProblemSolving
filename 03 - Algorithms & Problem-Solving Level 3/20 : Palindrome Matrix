@@ -1,0 +1,72 @@
+// Problem 20.
+
+#include <iostream>   
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;  
+
+int RandomNumber(int From, int To)
+{
+ int randNum = rand() % (To - From + 1) + From;
+
+ return randNum;
+}
+
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   Matrix[i][j] = RandomNumber(1, 100);
+  }
+ }
+}
+
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   cout << setw(3) << Matrix[i][j] << " ";
+  }
+
+  cout << endl;
+ }
+}
+
+bool IsPalindromeMatrix(int Matrix[3][3], short Rows, short Columns)
+{
+ for (short i = 0; i < Rows; i++)
+ {
+  for (short j = 0; j < Columns / 2; j++)
+  {
+   if (Matrix[i][j] != Matrix[i][Columns - 1 - j])
+    return false;
+  }
+ }
+
+ return true;
+}
+
+int main()
+{
+ srand((unsigned)time(NULL));
+
+ //int Matrix[3][3] = { {1,2,2}, {3,3,5},{6,1,6} } };
+
+ int Matrix[3][3];
+
+ FillMatrixWithRandomNumbers(Matrix, 3, 3);
+ cout << " Matrix1 : \n";
+ PrintMatrix(Matrix, 3, 3);
+
+ if (IsPalindromeMatrix(Matrix, 3, 3))
+  cout << "\n Yes : Matrix is Palindrome.\n";
+ else
+  cout << "\n No : Matrix is NOT Palindrome.\n";
+
+ return 0;
+}
