@@ -1,0 +1,84 @@
+// Problem 8.
+
+#include <iostream>   
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;  
+
+int RandomNumber(int From, int To)
+{
+ int randNum = rand() % (To - From + 1) + From;
+
+ return randNum;
+}
+
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+ for (int i = 0; i <= Rows - 1; i++)
+ {
+  for (int j = 0; j <= Columns - 1; j++)
+  {
+   Matrix[i][j] = RandomNumber(1, 100);
+  }
+ }
+}
+
+void TransposeMatrix(int arr[3][3], int arrTransosed[3][3], short Rows, short Columns)
+{
+ for (int i = 0; i < Rows; i++)
+ {
+  for (int j = 0; j < Columns; j++)
+  {
+   arrTransosed[i][j] = arr[j][i];
+  }
+ }
+}
+
+void MultiplyTwoMatrix(int arrMatrix1[3][3], int arrMatrix2[3][3], int MatrixResult[3][3], short Rows, short Columns)
+{
+ for (int i = 0; i < Rows; i++)
+ {
+  for (int j = 0; j < Columns; j++)
+  {
+   MatrixResult[i][j] = arrMatrix1[i][j] * arrMatrix2[i][j];
+  }
+ }
+}
+
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+ for (int i = 0; i <= Rows - 1; i++)
+ {
+  for (int j = 0; j <= Columns - 1; j++)
+  {
+  // printf(" %0*d   ", 2, Matrix[i][j]);
+      cout << setw(3) << Matrix[i][j] << " ";
+  }
+
+  cout << endl;
+ }
+}
+
+int main()
+{
+ srand((unsigned)time(NULL));
+
+ int arrMatrix1[3][3], arrMatrix2[3][3], arrMatrixResults[3][3];
+ 
+ FillMatrixWithRandomNumbers(arrMatrix1, 3, 3);
+ FillMatrixWithRandomNumbers(arrMatrix2, 3, 3);
+
+ cout << " Matrix 1 : \n";
+ PrintMatrix(arrMatrix1, 3, 3);
+
+ cout << "\n Matrix 2 : \n";
+ PrintMatrix(arrMatrix2, 3, 3);
+
+ MultiplyTwoMatrix(arrMatrix1, arrMatrix2, arrMatrixResults, 3, 3);
+
+ cout << "\n Results : \n";
+ PrintMatrix(arrMatrixResults, 3, 3);
+
+ return 0;
+}
