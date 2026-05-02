@@ -1,0 +1,46 @@
+// Problem 25.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+
+using namespace std;  
+
+string ReadString()
+{
+ string Text = "";
+
+ cout << "Please Enter your string?\n";
+ getline(cin, Text);
+
+ return Text;
+}
+
+string LowerFirstLetterOfEachWord(string S1)
+{
+ bool IsFirstLetter = true;
+
+ for (short i = 0; i < S1.length(); i++)
+ {
+  if (S1[i] != ' ' && IsFirstLetter)
+  {
+   S1[i] = tolower(S1[i]);
+  }
+
+  IsFirstLetter = (S1[i] == ' ' ? true : false);
+ }
+
+ return S1;
+}
+
+int main()
+{ 
+ string S1 = ReadString();
+
+ S1 = LowerFirstLetterOfEachWord(S1);
+
+ cout << "\nString After conversion : \n";
+ cout << S1 << endl;
+
+ return 0;
+}
