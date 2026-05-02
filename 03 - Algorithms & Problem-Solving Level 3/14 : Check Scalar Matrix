@@ -1,0 +1,78 @@
+// Problem 14.
+
+#include <iostream>   
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;  
+
+int RandomNumber(int From, int To)
+{
+ int randNum = rand() % (To - From + 1) + From;
+
+ return randNum;
+}
+
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   Matrix[i][j] = RandomNumber(1, 100);
+  }
+ }
+}
+
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   printf(" %0*d    ", 2, Matrix[i][j]);
+  }
+
+  cout << endl;
+ }
+}
+
+bool IsScalarMatrices(int Matrix[3][3], short Rows, short Columns)
+{
+ short FirstDiagElement = Matrix[0][0];
+
+ for (short i = 0; i < Rows; i++)
+ {
+  for (short j = 0; j < Columns; j++)
+  {
+   if (i == j && Matrix[i][j] != FirstDiagElement)
+   {
+    return false;
+   }
+   else if (i != j && Matrix[i][j] != 0)
+   {
+    return false;
+   }
+  }
+ }
+
+ return true;
+}
+
+int main()
+{
+ srand((unsigned)time(NULL));
+
+ int Matrix[3][3];
+
+ FillMatrixWithRandomNumbers(Matrix, 3, 3);
+ cout << " Matrix1 : \n";
+ PrintMatrix(Matrix, 3, 3);
+
+ if (IsScalarMatrices(Matrix, 3, 3))
+  cout << "\n Yes : Matrices is Scalar.\n ";
+ else
+  cout << "\n No : Matrices is NOT Scalar.\n ";
+
+ return 0;
+}
