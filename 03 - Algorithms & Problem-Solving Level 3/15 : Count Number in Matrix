@@ -1,0 +1,73 @@
+// Problem 15.
+
+#include <iostream>   
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;  
+
+int RandomNumber(int From, int To)
+{
+ int randNum = rand() % (To - From + 1) + From;
+
+ return randNum;
+}
+
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   Matrix[i][j] = RandomNumber(1, 10);
+  }
+ }
+}
+
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   printf(" %0*d    ", 2, Matrix[i][j]);
+  }
+
+  cout << endl;
+ }
+}
+
+short CountNumberInMatrix(int Matrix[3][3], short Rows, short Columns, short Number)
+{
+ short NumberCount = 0;
+
+ for (short i = 0; i < Rows; i++)
+ {
+  for (short j = 0; j < Columns; j++)
+  {
+   if (Matrix[i][j] == Number)
+    NumberCount++;
+  }
+ }
+
+ return NumberCount;
+}
+
+int main()
+{
+ srand((unsigned)time(NULL));
+
+ int Matrix[3][3];
+
+ FillMatrixWithRandomNumbers(Matrix, 3, 3);
+ cout << " Matrix1 : \n";
+ PrintMatrix(Matrix, 3, 3);
+
+ int Number = 0;
+ cout << "\nPlease Enter the Number to count in matrix ?\n";
+ cin >> Number;
+
+ cout << "\n Number " << Number << " Count in matrix is : " << CountNumberInMatrix(Matrix, 3, 3, Number) << endl;
+
+ return 0;
+}
