@@ -1,0 +1,71 @@
+// Problem 10.
+
+#include <iostream>   
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;  
+
+int RandomNumber(int From, int To)
+{
+ int randNum = rand() % (To - From + 1) + From;
+
+ return randNum;
+}
+
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   Matrix[i][j] = RandomNumber(1, 9);
+  }
+ }
+}
+
+int SumOfMatrix(int Matrix[3][3], short Rows, short Columns)
+{
+ int Sum = 0;
+
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   Sum += Matrix[i][j];
+  }
+ }
+
+ cout << endl;
+
+ return Sum;
+}
+
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+ for (short i = 0; i <= Rows - 1; i++)
+ {
+  for (short j = 0; j <= Columns - 1; j++)
+  {
+   printf(" %0*d    ", 2, Matrix[i][j]);
+  }
+
+  cout << endl;
+ }
+}
+
+int main()
+{
+ srand((unsigned)time(NULL));
+
+ int arr[3][3];
+
+ FillMatrixWithRandomNumbers(arr, 3, 3);
+
+ cout << " Matrix1 : \n";
+ PrintMatrix(arr, 3, 3); 
+
+ cout << " Sum Of Matrix is : " << SumOfMatrix(arr, 3, 3) << endl;
+
+ return 0;
+}
