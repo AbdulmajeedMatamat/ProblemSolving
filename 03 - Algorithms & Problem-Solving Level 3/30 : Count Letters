@@ -1,0 +1,53 @@
+// Problem 30.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+
+using namespace std;  
+
+string ReadString()
+{
+ string Text = "";
+
+ cout << "Please Enter your string?\n";
+ getline(cin, Text);
+
+ return Text;
+}
+
+char ReadCharcter()
+{
+ char Letter = ' ';
+
+ cout << "Please Enter a Charcter?\n";
+ cin >> Letter;
+
+ return Letter;
+}
+
+short CountLetters(string S1, char Letter)
+{
+ short Counter = 0;
+
+ for (short i = 0; i < S1.length(); i++)
+ {
+  if (S1[i] == Letter)
+   Counter++;
+ }
+
+ return Counter;
+}
+
+int main()
+{ 
+ string S1 = ReadString();
+
+ cout << '\n';
+
+ char Letter = ReadCharcter();
+
+ cout << "\n\nLetter '" << Letter << "' Count = " << CountLetters(S1, Letter) << endl;
+ 
+ return 0;
+}
