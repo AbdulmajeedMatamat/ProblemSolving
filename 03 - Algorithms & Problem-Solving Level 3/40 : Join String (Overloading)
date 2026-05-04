@@ -1,0 +1,46 @@
+// Problem 40.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;  
+
+string JoinString(string arrStr[5], short arrLength, string Delim)
+{
+ string Join = "";
+
+ for (short i = 0; i < arrLength; i++)
+ {
+  Join = Join + arrStr[i] + Delim;
+ }
+
+ return Join.substr(0, Join.length() - Delim.length());
+}
+
+string JoinString(vector <string> & vData, string Delim)
+{
+ string Join = "";
+
+ for (string& Text : vData)
+ {
+  Join = Join + Text + Delim;
+ }
+ 
+ return Join.substr(0, Join.length() - Delim.length());
+}
+
+int main()
+{  
+ vector <string> vData = { "Hassan", "Ali", "Fadi", "Lama", "Mohammed" };
+ string arrStr[5] =      { "Hassan", "Ali", "Fadi", "Lama", "Mohammed" };
+
+ cout << "Using Vector : \n\n";
+ cout << JoinString(vData, " ** ") << endl;
+
+ cout << "\n\nUsing Array :\n\n";
+ cout << JoinString(arrStr, 5, " ** ");
+
+ return 0;
+}
