@@ -1,0 +1,64 @@
+// Problem 45.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;  
+
+struct sClient
+{
+ string AccountNumber = "";
+ string PINCode = "";
+ string Name = "";
+ string PhoneNumber = "";
+ double AccountBalanse = 0;
+};
+
+sClient ReadNewClient()
+{
+ sClient ClientData;
+
+ cout << "Please Enter Client Data : \n\n";
+
+ cout << "Please Enter Account Number? ";
+ getline(cin, ClientData.AccountNumber);
+
+ cout << "\nPlease Enter PinCode? ";
+ getline(cin, ClientData.PINCode);
+
+ cout << "\nPlease Enter Name? ";
+ getline(cin, ClientData.Name);
+
+ cout << "\nPlease Enter Phone? ";
+ getline(cin, ClientData.PhoneNumber);
+
+ cout << "\nPlease Enter Account Balanse? ";
+ cin >> ClientData.AccountBalanse;
+
+ return ClientData;
+}
+
+string ConvertRecordToLine(sClient Client, string Seperator = "#//#")
+{
+ string stClientRecord = "";
+
+ stClientRecord += Client.AccountNumber + Seperator;
+ stClientRecord += Client.PINCode + Seperator;
+ stClientRecord += Client.Name + Seperator;
+ stClientRecord += Client.PhoneNumber + Seperator;
+ stClientRecord += to_string(Client.AccountBalanse);
+
+ return stClientRecord;
+}
+
+int main()
+{  
+ sClient ClientData = ReadNewClient();
+
+ cout << "\n\nClient Record for saving is : \n";
+ cout << ConvertRecordToLine(ClientData) << endl;
+
+ return 0;
+}
