@@ -1,0 +1,93 @@
+// Problem 43.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;  
+
+string UpperAllString(string S1)
+{
+ for (short i = 0; i < S1.length(); i++)
+ {
+  S1[i] = toupper(S1[i]);
+ }
+
+ return S1;
+}
+
+vector <string> SplitString(string S1, string Delim)
+{
+ vector <string> vSplit;
+
+ string Word = "";
+ short Position = 0; 
+
+ while ((Position = S1.find(Delim)) != std::string::npos)
+ {
+  Word = S1.substr(0, Position);
+
+  if (Word != " ");
+  {
+   vSplit.push_back(Word);
+  }
+
+  S1.erase(0, Position + Delim.length());
+ }
+
+ if (S1 != " ")
+ {
+  vSplit.push_back(S1);
+ }
+
+ return vSplit;
+}
+
+string JoinString(vector <string> S1, string Delim)
+{
+ string S2 = "";
+
+ for (string& s : S1)
+ {
+  S2 = S2 + s + Delim;
+ }
+ 
+ return S2.substr(0, S2.length() - Delim.length());
+}
+
+string ReplaseWordInStringUsingSplit(string S1, string StringToReplace, string ReplaceTo, bool MatchCaes = true)
+{
+ vector <string> vString = SplitString(S1, " ");
+
+ for (string& S : vString)
+ {
+  if (MatchCaes)
+  {
+   if (S == StringToReplace)
+    S = ReplaceTo;
+  }
+  else
+  {
+   if (UpperAllString(S) == UpperAllString(StringToReplace))
+    S = ReplaceTo;
+  }
+ }
+
+ return JoinString(vString, " ");
+}
+
+int main()
+{  
+ string S1 = "Welcome to Jordan , Jordan is nice Country.";
+ string StringToReplace = "jordan";
+ string ReplaceTo = "USA";
+
+ cout << "Original String : \n" << S1 << endl;
+
+ cout << "\nReplace with match case : \n" << ReplaseWordInStringUsingSplit(S1, StringToReplace, ReplaceTo) << endl;
+
+ cout << "\nReplace with dont match case : \n" << ReplaseWordInStringUsingSplit(S1, StringToReplace, ReplaceTo, false) << endl;
+
+ return 0;
+}
