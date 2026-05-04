@@ -1,0 +1,50 @@
+// Problem 35.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+
+using namespace std;  
+
+string ReadString()
+{
+ string Text = "";
+
+ cout << "Please Enter your string?\n";
+ getline(cin, Text);
+
+ return Text;
+}
+
+void PrintEachWordInString(string S1)
+{
+ string Delim = " ";
+ short Position = 0;
+ string Word;
+
+ cout << "\nYour string Words are : \n" << endl;
+ // HASSAN Noor 
+ while ((Position = S1.find(Delim)) != std::string::npos)
+ {
+  Word = S1.substr(0, Position);
+
+  if (Word != " ")
+  {
+   cout << Word << endl;
+  }
+
+  S1.erase(0, Position + Delim.length());
+ }
+ 
+ if (S1 != "")
+ {
+  cout << S1 << endl;
+ }
+}
+
+int main()
+{  
+ PrintEachWordInString(ReadString());
+
+ return 0;
+}
