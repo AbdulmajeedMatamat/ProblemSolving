@@ -1,0 +1,41 @@
+// Problem 32.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+
+using namespace std;  
+
+char ReadCharcter()
+{
+ char Letter = ' ';
+
+ cout << "Please Enter a Charcter?\n";
+ cin >> Letter;
+
+ return Letter;
+}
+
+char InvertCharcterCase(char Letter)
+{
+ return (isupper(Letter) ? tolower(Letter) : toupper(Letter));
+}
+
+bool IsVowel(char Letter)
+{
+ Letter = toupper(Letter);
+
+ return ((Letter == 'A') || (Letter == 'E') || (Letter == 'O') || (Letter == 'U') || (Letter == 'I'));
+}
+
+int main()
+{ 
+ char Letter = ReadCharcter();
+
+ if (IsVowel(Letter))
+  cout << "\nYes : Letter '" << Letter << "' is Vowel" << endl;
+ else
+  cout << "\nNo : Letter '" << Letter << "' is NOT Vowel" << endl;
+
+ return 0;
+}
