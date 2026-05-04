@@ -1,0 +1,70 @@
+// Problem 41.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;  
+
+string ReadString()
+{
+ string S1 = "";
+
+ cout << "Please Enter a string ?\n";
+ getline(cin, S1);
+
+ return S1;
+}
+
+vector <string> SplitString(string S1, string Delim)
+{
+ vector <string> vSplit;
+
+ short Position = 0;
+ string Word = "";
+
+ while ((Position = S1.find(Delim)) != std::string::npos)
+ {
+  Word = S1.substr(0, Position);
+
+  if (Word != " ")
+   vSplit.push_back(Word);
+
+  S1.erase(0, Position + Delim.length());
+ }
+
+ if (S1 != " ")
+ {
+  vSplit.push_back(S1);
+ }
+
+ return vSplit;
+}
+
+string ReverseWordsInStrint(string S1)
+{
+ vector <string> vString = SplitString(S1, " ");
+ string S2 = "";
+
+ vector <string>::iterator iter = vString.end();
+
+ while (iter != vString.begin())
+ {
+  iter--;
+
+  S2 = S2 + *iter + " ";
+ }
+
+ return S2.substr(0, S2.length() - 1);
+}
+
+int main()
+{  
+ string S1 = ReadString();
+
+ cout << "\n\nString After Reversing Words :\n";
+ cout << ReverseWordsInStrint(S1) << endl;
+
+ return 0;
+}
