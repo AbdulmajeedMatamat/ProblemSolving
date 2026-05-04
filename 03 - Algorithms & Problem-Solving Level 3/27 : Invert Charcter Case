@@ -1,0 +1,31 @@
+// Problem 27.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+
+using namespace std;  
+
+char ReadCharcter()
+{
+ char Letter = ' ';
+
+ cout << "Please Enter your Charcter?\n";
+ cin >> Letter;
+
+ return Letter;
+}
+
+char InvertCharcterCase(char Letter)
+{
+ return (isupper(Letter) ? tolower(Letter) : toupper(Letter));
+}
+
+int main()
+{ 
+ char Letter = ReadCharcter();
+
+ cout << "\nCharcter After Inverting Case : \n" << InvertCharcterCase(Letter) << endl;
+
+ return 0;
+}
