@@ -1,0 +1,57 @@
+// Problem 37.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;  
+
+string ReadString()
+{
+ string Text = "";
+
+ cout << "Please Enter your string?\n";
+ getline(cin, Text);
+
+ return Text;
+}
+
+vector <string> SplitString(string S1, string Delim)
+{
+ vector <string> vSplit;
+
+ short Position = 0;
+ string Word = "";
+
+ while ((Position = S1.find(Delim)) != std::string::npos)
+ {
+  Word = S1.substr(0, Position);
+
+  if (Word != " ")
+   vSplit.push_back(Word);
+
+  S1.erase(0, Position + Delim.length());
+ }
+
+ if (S1 != " ")
+  vSplit.push_back(S1);
+
+ return vSplit;
+}
+
+int main()
+{  
+ string S1 = ReadString();
+
+ vector <string> vSplit = SplitString(S1, " ");
+
+ cout << "\nTokens = " << vSplit.size() << endl << endl;
+
+ for (string& Text : vSplit)
+ {
+  cout << Text << endl;
+ }
+
+ return 0;
+}
