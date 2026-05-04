@@ -1,0 +1,44 @@
+// Problem 33.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+
+using namespace std;  
+
+string ReadString()
+{
+ string Text = "";
+
+ cout << "Please Enter your string?\n";
+ getline(cin, Text);
+
+ return Text;
+}
+
+bool IsVowel(char Letter)
+{
+ Letter = toupper(Letter);
+
+ return ((Letter == 'A') || (Letter == 'E') || (Letter == 'O') || (Letter == 'U') || (Letter == 'I'));
+}
+
+short CountVowel(string S1)
+{
+ short Counter = 0;
+
+ for (short i = 0; i < S1.length(); i++)
+ {
+  if (IsVowel(S1[i]))
+   Counter++;
+ }
+
+ return Counter;
+}
+
+int main()
+{  
+ cout << "\nNumber Of Vowels is : " << CountVowel(ReadString()) << endl;
+
+ return 0;
+}
