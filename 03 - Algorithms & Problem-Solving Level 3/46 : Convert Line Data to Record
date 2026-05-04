@@ -1,0 +1,79 @@
+// Problem 46.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;
+
+struct sClient
+{
+ string AccountNumber = "";
+ string PINCode = "";
+ string Name = "";
+ string PhoneNumber = "";
+ double AccountBalanse = 0;
+};
+
+vector <string> SplitString(string S1, string Delim)
+{
+ vector <string> vSplit;
+
+ short Position = 0;
+ string Word = "";
+
+ while ((Position = S1.find(Delim)) != std::string::npos)
+ {
+  Word = S1.substr(0, Position);
+
+  if (Word != " ")
+   vSplit.push_back(Word);
+
+  S1.erase(0, Position + Delim.length());
+ }
+
+ if (S1 != " ")
+  vSplit.push_back(S1);
+
+ return vSplit;
+}
+
+sClient ConvertLineToRecord(string LineData, string Seperator = "#//#")
+{
+ sClient Client;
+
+ vector <string> vClientData = SplitString(LineData, Seperator);
+ 
+ Client.AccountNumber = vClientData[0];
+ Client.PINCode = vClientData[1];
+ Client.Name = vClientData[2];
+ Client.PhoneNumber = vClientData[3];
+ Client.AccountBalanse = stod(vClientData[4]);
+
+ return Client;
+}
+
+void PrintClientRecord(sClient Client)
+{
+ cout << "Account Number  : " << Client.AccountNumber << endl;
+ cout << "Pin Code        : " << Client.PINCode << endl;
+ cout << "Name            : " << Client.Name << endl;
+ cout << "Phone           : " << Client.PhoneNumber << endl;
+ cout << "Account Balanse : " << Client.AccountBalanse << endl;
+}
+
+int main()
+{
+ string LineData = "H150#//#2006#//#Hassan Noor Ahmed#//#0123456789#//#5000";
+
+ cout << "Line Record is : \n";
+ cout << LineData << endl;
+
+ sClient ClientData = ConvertLineToRecord(LineData);
+
+ cout << "\nThe Following is the extracted client record : \n\n"; 
+ PrintClientRecord(ClientData);
+
+ return 0;
+}
