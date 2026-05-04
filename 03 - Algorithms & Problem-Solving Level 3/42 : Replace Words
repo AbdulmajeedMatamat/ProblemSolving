@@ -1,0 +1,47 @@
+// Problem 42.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;  
+
+string ReadString()
+{
+ string S1 = "";
+
+ cout << "Please Enter a string ?\n";
+ getline(cin, S1);
+
+ return S1;
+}
+
+string ReplaseWords(string S1, string StringToReplace, string ReplaceTo)
+{
+ short Position = S1.find(StringToReplace);
+
+ while (Position != std::string::npos)
+ {
+  S1 = S1.replace(Position, StringToReplace.length(), ReplaceTo);
+  Position = S1.find(StringToReplace);
+ }
+
+ return S1;
+}
+
+int main()
+{  
+ string S1 = "Welcome to Jordan , Jordan is nice Country.";
+ string StringToReplace = "Jordan";
+ string ReplaceTo = "USA";
+
+ cout << "Original String : \n";
+ cout << S1 <<  endl;
+
+ cout << "\nString After Replase : \n";
+
+ cout << ReplaseWords(S1, "Jordan", "USA") << endl;
+ 
+ return 0;
+}
