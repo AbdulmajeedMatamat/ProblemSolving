@@ -1,0 +1,101 @@
+// Problem 47.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+const string FileName = "ClientData.txt";
+
+struct sClient
+{
+	string AccountNumber = "";
+	string PINCode = "";
+	string Name = "";
+	string PhoneNumber = "";
+	double AccountBalance = 0;
+};
+
+sClient ReadNewClient()
+{
+	sClient ClientData;
+
+	cout << "Please Enter Account Number? ";
+	getline(cin >> ws, ClientData.AccountNumber);
+
+	cout << "Please Enter PinCode? ";
+	getline(cin, ClientData.PINCode);
+
+	cout << "Please Enter Name? ";
+	getline(cin, ClientData.Name);
+
+	cout << "Please Enter Phone? ";
+	getline(cin, ClientData.PhoneNumber);
+
+	cout << "Please Enter Account Balance? ";
+	cin >> ClientData.AccountBalance;
+
+	return ClientData;
+}
+
+string ConvertRecordToLine(sClient Client, string Seperator = "#//#")
+{
+	string stClientRecord = "";
+
+	stClientRecord += Client.AccountNumber + Seperator;
+	stClientRecord += Client.PINCode + Seperator;
+	stClientRecord += Client.Name + Seperator;
+	stClientRecord += Client.PhoneNumber + Seperator;
+	stClientRecord += to_string(Client.AccountBalance);
+
+	return stClientRecord;
+}
+
+void AddClientsToFile(string LineData, string FileName)
+{
+	fstream MyFile;
+
+	MyFile.open(FileName, ios::out | ios::app);
+
+	if (MyFile.is_open())
+	{
+		MyFile << LineData << endl;
+
+		MyFile.close();
+	}
+}
+
+void AddNewClient()
+{
+	sClient Client = ReadNewClient();
+
+	AddClientsToFile(ConvertRecordToLine(Client), FileName);
+}
+
+void AddClients()
+{
+	char AddMore = 'Y';
+
+	do
+	{
+		system("cls");
+
+		cout << "Adding New Client : \n\n";
+
+		AddNewClient();
+
+		cout << "\nClient Added Seccessfully, do you want to add more client?";
+		cin >> AddMore;
+
+	} while (toupper(AddMore) == 'Y');
+
+}
+
+int main()
+{
+	AddClients();
+
+	return 0;
+}
