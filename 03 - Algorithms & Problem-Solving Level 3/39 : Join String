@@ -1,0 +1,29 @@
+// Problem 39.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+#include <vector>
+
+using namespace std;  
+
+string JoinString(vector <string> & vData, string Delim)
+{
+ string Join = "";
+
+ for (string& Text : vData)
+ {
+  Join = Join + Text + Delim;
+ }
+ 
+ return Join.substr(0, Join.length() - Delim.length());
+}
+
+int main()
+{  
+ vector <string> vData = { "Hassan", "Ali", "Fadi", "Lama", "Mohammed" };
+
+ cout << JoinString(vData, " ** ") << endl;
+
+ return 0;
+}
