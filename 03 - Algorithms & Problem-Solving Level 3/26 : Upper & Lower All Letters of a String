@@ -1,0 +1,55 @@
+// Problem 26.
+
+#include <iostream>   
+#include <string>
+#include <cctype>
+
+using namespace std;  
+
+string ReadString()
+{
+ string Text = "";
+
+ cout << "Please Enter your string?\n";
+ getline(cin, Text);
+
+ return Text;
+}
+
+string UpperAllString(string S1)
+{
+ for (short i = 0; i < S1.length(); i++)
+ {
+  S1[i] = toupper(S1[i]);
+ }
+
+ return S1;
+}
+
+string LowerAllString(string S1)
+{
+ for (short i = 0; i < S1.length(); i++)
+ {
+  S1[i] = tolower(S1[i]);
+ }
+
+ return S1;
+}
+
+int main()
+{ 
+ string S1 = ReadString();
+
+ S1 = UpperAllString(S1);
+ cout << "\nString After Upper : \n";
+ cout << S1 << endl;
+
+
+
+ S1 = LowerAllString(S1);
+ cout << "\nString After Lower : \n";
+ cout << S1 << endl;
+
+
+ return 0;
+}
