@@ -1,0 +1,72 @@
+	// Problem 13.
+#include <iostream>
+
+using namespace std;
+
+struct sDate
+{
+    short Year;
+    short Month;
+    short Day;
+};
+
+short ReadYear()
+{
+    short Year = 0;
+
+    cout << "Please enter a Year? ";
+    cin >> Year;
+
+    return Year;
+}
+
+short ReadMonth()
+{
+    short Month = 0;
+
+    cout << "Please enter a Month? ";
+    cin >> Month;
+
+    return Month;
+}
+
+short ReadDay()
+{
+    short Day = 0;
+
+    cout << "Please enter a Day? ";
+    cin >> Day;
+
+    return Day;
+}
+
+sDate ReadFullData()
+{
+    sDate Date;
+
+    Date.Day = ReadDay();
+    Date.Month = ReadMonth();
+    Date.Year = ReadYear();
+
+    return Date;
+}
+
+bool IsDate1BeforDate2(sDate Date1, sDate Date2)
+{
+    return  (Date1.Year < Date2.Year) ? true :
+        ((Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month ? true : (Date1.Month == Date2.Month ? Date1.Day < Date2.Day : false)) : false);    
+}
+
+int main()
+{
+    sDate Date1 = ReadFullData();
+    cout << '\n';
+    sDate Date2 = ReadFullData();
+
+    if (IsDate1BeforDate2(Date1, Date2))
+        cout << "\n Yes, Date 1 is Less Than Date 2.\n";
+    else
+        cout << "\n No, Date 1 is NOT Less Than Date 2.\n";
+
+    return 0;
+}
