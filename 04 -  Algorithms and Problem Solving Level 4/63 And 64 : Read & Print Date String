@@ -1,0 +1,79 @@
+// Problem 63 And 64.
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+struct sDate
+{
+    short Year;
+    short Month;
+    short Day;
+};
+
+string ReadStringDate(string Message)
+{
+    string DateString = "";
+
+    cout << Message;
+    getline(cin >> ws, DateString);
+
+    return DateString;
+}
+
+vector <string> SplitString(string S1, string Delim)
+{
+    vector <string> vSplit;
+
+    short Position = 0;
+    string Word = "";
+
+    while ((Position = S1.find(Delim)) != std::string::npos)
+    {
+        Word = S1.substr(0, Position);
+
+        if (Word != " ")
+            vSplit.push_back(Word);
+
+        S1.erase(0, Position + Delim.length());
+    }
+
+    if (S1 != " ")
+        vSplit.push_back(S1);
+
+    return vSplit;
+}
+
+sDate StringToDate(string DateString)
+{
+    sDate Date;
+
+    vector <string> vDate = SplitString(DateString, "/");
+
+    Date.Day = stoi(vDate[0]);
+    Date.Month = stoi(vDate[1]);
+    Date.Year = stoi(vDate[2]);
+
+    return Date;
+}
+
+string DateToString(sDate Date)
+{
+    return to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+}
+
+int main()
+{
+    string DateString = ReadStringDate("Please Enter Date dd/mm/yyyy ?  ");
+
+    sDate Date = StringToDate(DateString);
+
+    cout << "\nDay : " << Date.Day << endl;
+    cout << "Month : " << Date.Month << endl;
+    cout << "Year : " << Date.Year << endl << endl;
+
+    cout << "You Entered : " << DateToString(Date) << endl;
+
+    return 0;
+}
