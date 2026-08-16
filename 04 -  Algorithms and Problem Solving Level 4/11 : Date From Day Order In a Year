@@ -1,0 +1,116 @@
+// Problem 11.
+#include <iostream>
+
+using namespace std;
+
+struct sDate
+{
+    short Year;
+    short Month;
+    short Day;
+};
+
+short ReadYear()
+{
+    short Year = 0;
+
+    cout << "Please enter a Year? ";
+    cin >> Year;
+
+    return Year;
+}
+
+short ReadMonth()
+{
+    short Month = 0;
+
+    cout << "Please enter a Month? ";
+    cin >> Month;
+
+    return Month;
+}
+
+short ReadDay()
+{
+    short Day = 0;
+
+    cout << "Please enter a Day? ";
+    cin >> Day;
+
+    return Day;
+}
+
+bool IsLeapYear(short Year)
+{
+    return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+}
+
+short NumberOfDaysInAMonth(short Year, short Month)
+{
+    if (Month < 1 || Month > 12)
+        return 0;
+
+    short NumberOfDays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31,30,31 };
+
+    return (Month == 2) ? (IsLeapYear(Year) ? 29 : 28) : NumberOfDays[Month - 1];
+}
+
+short NumberOfDaysFromTheBeginningOfTheYear(short Year, short Month, short Day)
+{
+    short TotalDays = 0;
+
+    for (short i = 1; i <= Month - 1; i++)
+    {
+        TotalDays += NumberOfDaysInAMonth(Year, i);
+    }
+    
+    return TotalDays + Day;
+}
+
+sDate GetDateFromDayOrderInAYear(short Year, short DateOrderInYear)
+{
+    sDate Date;
+
+    short RemainingDays = DateOrderInYear;
+    short MonthDays = 0;
+
+    Date.Year = Year;
+    Date.Month = 1;
+
+    while (true)
+    {
+        MonthDays = NumberOfDaysInAMonth(Year, Date.Month);
+
+        if (RemainingDays > MonthDays)
+        {
+            RemainingDays -= MonthDays;
+
+            Date.Month++;
+        }
+        else
+        {
+            Date.Day = RemainingDays;
+            break;
+        }
+    }
+
+    return Date;
+}
+
+int main()
+{
+    short Day = ReadDay();
+    short Month = ReadMonth();
+    short Year = ReadYear();
+
+    short DaysOrderInAYear = NumberOfDaysFromTheBeginningOfTheYear(Year, Month, Day);
+
+    cout << "\n Number Of Days From The Beginning of the Year is : " << DaysOrderInAYear << endl;
+
+    sDate Date = GetDateFromDayOrderInAYear(Year, DaysOrderInAYear);
+
+    cout << "\n Date For [ " << DaysOrderInAYear << " ] is : "
+        << Date.Day << "/" << Date.Month << "/" << Date.Year << endl;
+
+    return 0;
+}
